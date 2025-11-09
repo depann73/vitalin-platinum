@@ -79,5 +79,18 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
     "vite": "^5.4.19"
-  }
+  },
+  "description": "**URL**: https://lovable.dev/projects/b3b30b2a-7b0d-45c8-a4bf-207c88a606e2",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/depann73/vitalin-platinum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/depann73/vitalin-platinum/issues"
+  },
+  "homepage": "https://github.com/depann73/vitalin-platinum#readme"
 }
