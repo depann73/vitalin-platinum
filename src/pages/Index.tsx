@@ -1,13 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Hero } from "@/components/Hero";
+import { Benefits } from "@/components/Benefits";
+import { ProductDetails } from "@/components/ProductDetails";
+import { CTA } from "@/components/CTA";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <Hero />
+      <Benefits />
+      <ProductDetails />
+      <CTA />
+      
+      {/* Footer */}
+      <footer className="bg-foreground text-background py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm opacity-80">
+            © 2025 VITALIN Platinum. All rights reserved. | BPOM RI MD 071211001300105 | Halal MUI
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 };
 
