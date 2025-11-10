@@ -6,6 +6,7 @@ import promo2 from "@/assets/promo-2.jpeg";
 import promo3 from "@/assets/promo-3.jpeg";
 import promo4 from "@/assets/promo-4.jpeg";
 import { MessageCircle, ShoppingCart, Sparkles } from "lucide-react";
+import { ProductBox3D } from "@/components/ProductBox3D";
 
 export const Hero = () => {
   const [rotation, setRotation] = useState(0);
@@ -110,55 +111,9 @@ export const Hero = () => {
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-30 animate-pulse-gold" />
               
-              {/* 3D Product Box rotating 360° */}
-              <div 
-                className="relative cursor-grab active:cursor-grabbing"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const centerX = rect.width / 2;
-                  const rotateY = ((x - centerX) / centerX) * 45;
-                  setRotation(rotateY);
-                }}
-                onMouseLeave={() => {
-                  setIsHovering(false);
-                }}
-                style={{
-                  transform: `perspective(1500px) rotateY(${rotation}deg)`,
-                  transformStyle: "preserve-3d",
-                  transition: isHovering ? "none" : "transform 0.1s linear"
-                }}
-              >
-                {/* Glow layers */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-gold/40 to-accent/40 rounded-3xl blur-3xl"
-                  style={{
-                    transform: "translateZ(-80px)",
-                    transformStyle: "preserve-3d"
-                  }}
-                />
-                
-                {/* Main product box */}
-                <div
-                  className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-card to-card/80 p-2"
-                  style={{
-                    transform: "translateZ(30px)",
-                    transformStyle: "preserve-3d",
-                    boxShadow: "0 40px 100px -20px rgba(0,0,0,0.5)"
-                  }}
-                >
-                  <img 
-                    src={productBox} 
-                    alt="VITALIN Platinum Product Box - 360° Rotatable View"
-                    className="w-full max-w-lg rounded-xl"
-                  />
-                  
-                  {/* Premium lighting effects */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/30 pointer-events-none rounded-xl" />
-                  <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
-                </div>
+              {/* 3D Product Box (Three.js) */}
+              <div className="relative">
+                <ProductBox3D />
               </div>
 
               {/* Floating Badge */}
