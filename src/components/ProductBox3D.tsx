@@ -55,9 +55,9 @@ function BoxModel() {
 
   return (
     <group ref={groupRef} onPointerDown={onPointerDown} onPointerUp={onPointerUp} onPointerMove={onPointerMove}>
-      {/* The milk box: width, height, depth */}
+      {/* The milk box: width, height, depth - scaled up */}
       <mesh castShadow receiveShadow onWheel={onWheel}>
-        <boxGeometry args={[2, 3, 1]} />
+        <boxGeometry args={[3, 4.5, 1.5]} />
         {materials.map((m, i) => (
           // @ts-ignore three types for materials array via attachArray
           <primitive key={i} attach="material" object={m} />
@@ -69,12 +69,12 @@ function BoxModel() {
 
 export const ProductBox3D = () => {
   return (
-    <div className="relative w-full max-w-lg aspect-[3/4]">
-      <Canvas shadows camera={{ position: [0, 0, 6], fov: 45 }}>
+    <div className="relative w-full max-w-2xl aspect-[3/4]">
+      <Canvas shadows camera={{ position: [0, 0, 7], fov: 50 }}>
         {/* Lights */}
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[3, 5, 2]} intensity={1} castShadow />
-        <directionalLight position={[-3, -2, -2]} intensity={0.3} />
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[3, 5, 2]} intensity={1.2} castShadow />
+        <directionalLight position={[-3, -2, -2]} intensity={0.4} />
 
         
 
