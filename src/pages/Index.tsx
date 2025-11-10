@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Benefits } from "@/components/Benefits";
+import { PromoGallery } from "@/components/PromoGallery";
 import { ProductDetails } from "@/components/ProductDetails";
 import { CTA } from "@/components/CTA";
 import { useEffect } from "react";
@@ -14,6 +15,7 @@ const Index = () => {
     <main className="min-h-screen">
       <Hero />
       <Benefits />
+      <PromoGallery />
       <ProductDetails />
       <CTA />
       

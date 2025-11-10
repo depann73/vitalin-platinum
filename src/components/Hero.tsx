@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import productBox from "@/assets/product-box.png";
+import promo1 from "@/assets/promo-1.jpeg";
+import promo2 from "@/assets/promo-2.jpeg";
+import promo3 from "@/assets/promo-3.jpeg";
+import promo4 from "@/assets/promo-4.jpeg";
 import { MessageCircle, ShoppingCart, Sparkles } from "lucide-react";
 
 export const Hero = () => {
   const [rotation, setRotation] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    if (!isHovering) {
+      const interval = setInterval(() => {
+        setRotation((prev) => (prev + 0.5) % 360);
+      }, 16);
+      return () => clearInterval(interval);
+    }
+  }, [isHovering]);
 
   const handleWhatsApp = () => {
     window.open("https://wa.me/6289513980460", "_blank");
@@ -19,11 +33,11 @@ export const Hero = () => {
           loop 
           muted 
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
         >
-          <source src="/milk-background.mp4" type="video/mp4" />
+          <source src="/milk-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/70" />
       </div>
 
       {/* Animated Background Elements */}
@@ -96,60 +110,54 @@ export const Hero = () => {
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-30 animate-pulse-gold" />
               
-              {/* 3D Product Box with depth effect */}
+              {/* 3D Product Box rotating 360° */}
               <div 
-                className="relative cursor-grab active:cursor-grabbing transition-smooth"
+                className="relative cursor-grab active:cursor-grabbing"
+                onMouseEnter={() => setIsHovering(true)}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
                   const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
                   const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateY = ((x - centerX) / centerX) * 25;
-                  const rotateX = ((centerY - y) / centerY) * 15;
+                  const rotateY = ((x - centerX) / centerX) * 45;
                   setRotation(rotateY);
                 }}
-                onMouseLeave={() => setRotation(0)}
+                onMouseLeave={() => {
+                  setIsHovering(false);
+                }}
                 style={{
-                  transform: `perspective(1200px) rotateY(${rotation}deg) rotateX(${rotation * 0.3}deg)`,
-                  transformStyle: "preserve-3d"
+                  transform: `perspective(1500px) rotateY(${rotation}deg)`,
+                  transformStyle: "preserve-3d",
+                  transition: isHovering ? "none" : "transform 0.1s linear"
                 }}
               >
-                {/* Box shadow layers for 3D depth */}
+                {/* Glow layers */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-br from-gold/30 to-accent/30 rounded-3xl blur-2xl"
+                  className="absolute inset-0 bg-gradient-to-br from-gold/40 to-accent/40 rounded-3xl blur-3xl"
                   style={{
-                    transform: "translateZ(-50px)",
-                    transformStyle: "preserve-3d"
-                  }}
-                />
-                <div 
-                  className="absolute inset-0 bg-gradient-to-tl from-primary/20 to-transparent rounded-3xl blur-xl"
-                  style={{
-                    transform: "translateZ(-30px)",
+                    transform: "translateZ(-80px)",
                     transformStyle: "preserve-3d"
                   }}
                 />
                 
-                {/* Main product image with 3D box appearance */}
+                {/* Main product box */}
                 <div
-                  className="relative rounded-2xl overflow-hidden"
+                  className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-card to-card/80 p-2"
                   style={{
-                    transform: "translateZ(20px)",
+                    transform: "translateZ(30px)",
                     transformStyle: "preserve-3d",
-                    boxShadow: "0 30px 80px -20px rgba(0,0,0,0.4)"
+                    boxShadow: "0 40px 100px -20px rgba(0,0,0,0.5)"
                   }}
                 >
                   <img 
                     src={productBox} 
-                    alt="VITALIN Platinum Product Box"
-                    className="w-full max-w-lg"
+                    alt="VITALIN Platinum Product Box - 360° Rotatable View"
+                    className="w-full max-w-lg rounded-xl"
                   />
                   
-                  {/* 3D edge highlights */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 pointer-events-none" />
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+                  {/* Premium lighting effects */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/30 pointer-events-none rounded-xl" />
+                  <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
                 </div>
               </div>
 
