@@ -12,6 +12,20 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-premium">
+      {/* Video Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        >
+          <source src="/milk-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+      </div>
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
@@ -82,30 +96,61 @@ export const Hero = () => {
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-30 animate-pulse-gold" />
               
-              {/* Product Image with 3D effect */}
+              {/* 3D Product Box with depth effect */}
               <div 
                 className="relative cursor-grab active:cursor-grabbing transition-smooth"
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
                   const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
                   const centerX = rect.width / 2;
-                  const rotateY = ((x - centerX) / centerX) * 20;
+                  const centerY = rect.height / 2;
+                  const rotateY = ((x - centerX) / centerX) * 25;
+                  const rotateX = ((centerY - y) / centerY) * 15;
                   setRotation(rotateY);
                 }}
                 onMouseLeave={() => setRotation(0)}
                 style={{
-                  transform: `perspective(1000px) rotateY(${rotation}deg)`,
+                  transform: `perspective(1200px) rotateY(${rotation}deg) rotateX(${rotation * 0.3}deg)`,
                   transformStyle: "preserve-3d"
                 }}
               >
-                <img 
-                  src={productBox} 
-                  alt="VITALIN Platinum Product Box"
-                  className="w-full max-w-lg drop-shadow-2xl"
-                  style={{ 
-                    filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.3))"
+                {/* Box shadow layers for 3D depth */}
+                <div 
+                  className="absolute inset-0 bg-gradient-to-br from-gold/30 to-accent/30 rounded-3xl blur-2xl"
+                  style={{
+                    transform: "translateZ(-50px)",
+                    transformStyle: "preserve-3d"
                   }}
                 />
+                <div 
+                  className="absolute inset-0 bg-gradient-to-tl from-primary/20 to-transparent rounded-3xl blur-xl"
+                  style={{
+                    transform: "translateZ(-30px)",
+                    transformStyle: "preserve-3d"
+                  }}
+                />
+                
+                {/* Main product image with 3D box appearance */}
+                <div
+                  className="relative rounded-2xl overflow-hidden"
+                  style={{
+                    transform: "translateZ(20px)",
+                    transformStyle: "preserve-3d",
+                    boxShadow: "0 30px 80px -20px rgba(0,0,0,0.4)"
+                  }}
+                >
+                  <img 
+                    src={productBox} 
+                    alt="VITALIN Platinum Product Box"
+                    className="w-full max-w-lg"
+                  />
+                  
+                  {/* 3D edge highlights */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 pointer-events-none" />
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+                </div>
               </div>
 
               {/* Floating Badge */}
