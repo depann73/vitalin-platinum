@@ -1,8 +1,7 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import { TextureLoader, MeshStandardMaterial, Group, Vector2 } from "three";
-import frontTexUrl from "@/assets/vitalin-front.png";
-import productBoxFallback from "@/assets/product-box.png";
+import frontTexUrl from "@/assets/vitalin-box-front.png";
 
 // 3D Box with per-face materials and drag/scroll controls
 function BoxModel() {
@@ -11,24 +10,21 @@ function BoxModel() {
   const [lastPos, setLastPos] = useState(new Vector2(0, 0));
   const [autoRotate, setAutoRotate] = useState(true);
 
-  // Load textures (fallback to productBox if transparent not available)
-  const [frontTex, sideTex, topTex] = useLoader(TextureLoader, [
-    frontTexUrl || productBoxFallback,
-    frontTexUrl || productBoxFallback,
-    frontTexUrl || productBoxFallback,
-  ]);
+  // Load textures
+  const frontTex = useLoader(TextureLoader, frontTexUrl);
 
   const materials = useMemo(() => {
-    const opts = { metalness: 0.1, roughness: 0.6 } as const;
+    const opts = { metalness: 0.15, roughness: 0.5 } as const;
+    const yellowGold = 0xFFD700;
     const front = new MeshStandardMaterial({ map: frontTex, ...opts });
     const back = new MeshStandardMaterial({ map: frontTex, ...opts });
-    const right = new MeshStandardMaterial({ map: sideTex, ...opts });
-    const left = new MeshStandardMaterial({ map: sideTex, ...opts });
-    const top = new MeshStandardMaterial({ map: topTex, ...opts });
+    const right = new MeshStandardMaterial({ color: yellowGold, ...opts });
+    const left = new MeshStandardMaterial({ color: yellowGold, ...opts });
+    const top = new MeshStandardMaterial({ color: yellowGold, ...opts });
     const bottom = new MeshStandardMaterial({ color: 0xf4e6b3, ...opts });
     // Order: right, left, top, bottom, front, back
     return [right, left, top, bottom, front, back];
-  }, [frontTex, sideTex, topTex]);
+  }, [frontTex]);
 
   useFrame((_state, delta) => {
     if (!groupRef.current) return;
