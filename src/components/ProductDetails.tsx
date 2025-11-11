@@ -219,7 +219,7 @@ export const ProductDetails = () => {
                           <p className="text-sm text-muted-foreground">Badan Pengawas Obat dan Makanan</p>
                         </div>
                       </div>
-                      <p className="font-mono text-sm bg-card/50 p-3 rounded">MD 071211001300105</p>
+                      <p className="font-mono text-sm bg-card/50 p-3 rounded">MD 07121101300105</p>
                     </div>
                     <div className="p-6 bg-gradient-to-br from-accent/10 to-gold/10 rounded-xl border border-gold/30">
                       <div className="flex items-center gap-4 mb-4">
