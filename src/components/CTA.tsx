@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, Phone, MapPin, Clock } from "lucide-react";
+import bankEkspedisiImg from "@/assets/bank-ekspedisi.jpg";
 
 const whatsappNumbers = [
   { number: "6289513980460", label: "WA 1" },
@@ -104,6 +105,17 @@ export const CTA = () => {
               <p className="text-3xl md:text-4xl font-bold">BPOM</p>
               <p className="text-sm opacity-90">Registered</p>
             </div>
+          </div>
+
+          {/* Bank & Ekspedisi Logos */}
+          <div className="mt-12 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
+            <Card className="bg-card/80 backdrop-blur-sm p-6 border border-gold/30">
+              <img 
+                src={bankEkspedisiImg} 
+                alt="Bank dan Ekspedisi - Kami bekerja sama dengan jasa ekspedisi JNT, POS Indonesia, Ninja Express, JNE. Transaksi transfer dapat menggunakan BCA, BNI, BRI, Mandiri, ATM Bersama" 
+                className="w-full h-auto rounded-lg"
+              />
+            </Card>
           </div>
         </div>
       </div>
