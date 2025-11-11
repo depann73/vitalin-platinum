@@ -1,46 +1,49 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, Heart, Brain, Sparkles, Bone, Zap, Users, Star } from "lucide-react";
+import { Shield, Star, Sparkles } from "lucide-react";
+import benefitBones from "@/assets/benefit-bones.jpg";
+import benefitJoints from "@/assets/benefit-joints.jpg";
+import benefitEnergy from "@/assets/benefit-energy.jpg";
+import benefitDigestion from "@/assets/benefit-digestion.jpg";
+import benefitBrain from "@/assets/benefit-brain.jpg";
+import benefitSkin from "@/assets/benefit-skin.jpg";
+import benefitMental from "@/assets/benefit-mental.jpg";
+import halalLogo from "@/assets/halal-logo.jpg";
 
 const benefits = [
   {
-    icon: Shield,
+    image: benefitBones,
     title: "Menjaga Tulang",
     description: "Memperkuat tulang dan sendi dengan kalsium alami",
   },
   {
-    icon: Heart,
+    image: benefitJoints,
     title: "Menjaga Sendi",
     description: "Meningkatkan fleksibilitas dan kesehatan sendi",
   },
   {
-    icon: Zap,
+    image: benefitEnergy,
     title: "Meningkatkan Energi",
     description: "Memberikan stamina dan vitalitas sepanjang hari",
   },
   {
-    icon: Sparkles,
+    image: benefitDigestion,
     title: "Menyehatkan Pencernaan",
     description: "Mudah dicerna dan menyehatkan sistem pencernaan",
   },
   {
-    icon: Brain,
+    image: benefitBrain,
     title: "Menjaga Fungsi Otak",
     description: "Meningkatkan daya ingat dan konsentrasi",
   },
   {
-    icon: Bone,
+    image: benefitSkin,
     title: "Membantu Kecantikan Kulit",
     description: "Mencerahkan dan menjaga elastisitas kulit",
   },
   {
-    icon: Users,
+    image: benefitMental,
     title: "Menjaga Konsentrasi Otak",
     description: "Meningkatkan fokus dan kejernihan mental",
-  },
-  {
-    icon: Star,
-    title: "1000++ Manfaat",
-    description: "Khasiat lengkap untuk kesehatan keluarga",
   },
 ];
 
@@ -58,7 +61,7 @@ export const Benefits = () => {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Kombinasi sempurna susu kambing Saanen dan Royal Jelly untuk kesehatan optimal
+            Raih kesehatan optimal dengan khasiat luar biasa dari susu kambing premium
           </p>
         </div>
 
@@ -66,16 +69,18 @@ export const Benefits = () => {
           {benefits.map((benefit, index) => (
             <Card 
               key={index}
-              className="group hover:shadow-gold transition-smooth border-2 border-transparent hover:border-gold/50 bg-card/50 backdrop-blur-sm animate-scale-in"
+              className="group hover:shadow-gold transition-smooth border-2 border-transparent hover:border-gold/50 bg-card/50 backdrop-blur-sm animate-scale-in overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="relative">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-soft group-hover:scale-110 transition-smooth">
-                    <benefit.icon className="w-7 h-7 text-accent-foreground" />
-                  </div>
-                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-smooth" />
-                </div>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={benefit.image} 
+                  alt={benefit.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/50 to-transparent" />
+              </div>
+              <CardContent className="p-6 space-y-3 -mt-6 relative z-10">
                 <h3 className="text-lg font-bold text-foreground">
                   {benefit.title}
                 </h3>
@@ -88,18 +93,18 @@ export const Benefits = () => {
         </div>
 
         {/* Trust Badges */}
-        <div className="mt-16 flex flex-wrap justify-center items-center gap-8 opacity-70">
-          <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-gold" />
-            <span className="font-medium">BPOM Certified</span>
+        <div className="mt-16 flex flex-wrap justify-center items-center gap-8">
+          <div className="flex items-center gap-3 px-4 py-2 bg-card/50 rounded-lg border border-gold/30">
+            <Shield className="w-6 h-6 text-gold" />
+            <span className="font-semibold">BPOM Certified</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Star className="w-5 h-5 text-gold" />
-            <span className="font-medium">Halal Indonesia</span>
+          <div className="flex items-center gap-3 px-4 py-2 bg-card/50 rounded-lg border border-gold/30">
+            <img src={halalLogo} alt="Halal Indonesia" className="w-10 h-10 object-contain" />
+            <span className="font-semibold">Halal Indonesia</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-gold" />
-            <span className="font-medium">Premium Quality</span>
+          <div className="flex items-center gap-3 px-4 py-2 bg-card/50 rounded-lg border border-gold/30">
+            <Sparkles className="w-6 h-6 text-gold" />
+            <span className="font-semibold">Premium Quality</span>
           </div>
         </div>
       </div>
