@@ -2,10 +2,10 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import { TextureLoader, MeshStandardMaterial, Group, Vector2 } from "three";
 import frontTexUrl from "@/assets/box-front.png";
-import backTexUrl from "@/assets/box-back.png";
-import leftTexUrl from "@/assets/box-left.png";
-import rightTexUrl from "@/assets/box-right.png";
-import topTexUrl from "@/assets/box-top.png";
+import backTexUrl from "@/assets/box-back-new.png";
+import leftTexUrl from "@/assets/box-left-new.png";
+import rightTexUrl from "@/assets/box-right-new.png";
+import topTexUrl from "@/assets/box-bottom.png";
 
 // 3D Box with per-face materials and drag/scroll controls
 function BoxModel() {
