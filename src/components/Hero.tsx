@@ -34,7 +34,7 @@ export const Hero = () => {
           loop 
           muted 
           playsInline
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] object-cover opacity-60 scale-110"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[200%] min-h-[200%] object-cover opacity-60 scale-[2]"
         >
           <source src="/milk-video.mov" type="video/mp4" />
         </video>
