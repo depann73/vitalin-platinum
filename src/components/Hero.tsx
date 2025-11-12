@@ -34,11 +34,11 @@ export const Hero = () => {
           loop 
           muted 
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
         >
           <source src="/milk-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/40" />
       </div>
 
       {/* Animated Background Elements */}
