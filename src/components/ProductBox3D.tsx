@@ -1,11 +1,12 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import { TextureLoader, MeshStandardMaterial, Group, Vector2 } from "three";
-import frontTexUrl from "@/assets/box-front.png";
+import frontTexUrl from "@/assets/box-front-new.png";
 import backTexUrl from "@/assets/box-back-new.png";
 import leftTexUrl from "@/assets/box-left-new.png";
 import rightTexUrl from "@/assets/box-right-new.png";
-import topTexUrl from "@/assets/box-bottom.png";
+import topTexUrl from "@/assets/box-top-new.png";
+import bottomTexUrl from "@/assets/box-bottom-new.png";
 
 // 3D Box with per-face materials and drag/scroll controls
 function BoxModel() {
@@ -20,6 +21,7 @@ function BoxModel() {
   const leftTex = useLoader(TextureLoader, leftTexUrl);
   const rightTex = useLoader(TextureLoader, rightTexUrl);
   const topTex = useLoader(TextureLoader, topTexUrl);
+  const bottomTex = useLoader(TextureLoader, bottomTexUrl);
 
   const materials = useMemo(() => {
     const opts = { metalness: 0.15, roughness: 0.5 } as const;
@@ -28,10 +30,10 @@ function BoxModel() {
     const right = new MeshStandardMaterial({ map: rightTex, ...opts });
     const left = new MeshStandardMaterial({ map: leftTex, ...opts });
     const top = new MeshStandardMaterial({ map: topTex, ...opts });
-    const bottom = new MeshStandardMaterial({ map: topTex, ...opts });
+    const bottom = new MeshStandardMaterial({ map: bottomTex, ...opts });
     // Order: right, left, top, bottom, front, back
     return [right, left, top, bottom, front, back];
-  }, [frontTex, backTex, leftTex, rightTex, topTex]);
+  }, [frontTex, backTex, leftTex, rightTex, topTex, bottomTex]);
 
   useFrame((_state, delta) => {
     if (!groupRef.current) return;
