@@ -52,6 +52,11 @@ export default {
           light: "hsl(var(--gold-light))",
           dark: "hsl(var(--gold-dark))",
         },
+        "gold-foreground": "hsl(var(--gold-foreground))",
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
