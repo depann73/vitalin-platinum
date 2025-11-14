@@ -18,12 +18,8 @@ export const ProductDetails = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="composition" className="w-full animate-scale-in">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 bg-card/50 backdrop-blur-sm p-2">
-              <TabsTrigger value="composition" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-accent-foreground">
-                <Package className="w-4 h-4 mr-2" />
-                Komposisi
-              </TabsTrigger>
+          <Tabs defaultValue="benefits" className="w-full animate-scale-in">
+            <TabsList className="grid w-full grid-cols-3 mb-8 bg-card/50 backdrop-blur-sm p-2">
               <TabsTrigger value="benefits" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-accent-foreground">
                 <CheckCircle2 className="w-4 h-4 mr-2" />
                 Manfaat
@@ -38,109 +34,224 @@ export const ProductDetails = () => {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="composition">
-              <Card className="border-2 border-gold/30 bg-card/80 backdrop-blur-sm shadow-premium">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Komposisi Premium</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold text-primary">Susu Kambing Murni (50%)</h3>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Kalsium 250mg per gelas untuk tulang kuat</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Protein mudah diserap tubuh</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Rendah laktosa untuk pencernaan sensitif</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Antioksidan alami untuk regenerasi sel</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold text-accent">Royal Jelly (10%)</h3>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Vitamin B kompleks lengkap</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Asam lemak 10-HDA eksklusif</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Mineral esensial (Kalsium, Zat Besi, Seng)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                          <span>Senyawa bioaktif anti-penuaan</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-secondary/50 rounded-lg border border-gold/30">
-                    <p className="text-sm">
-                      <strong>Komposisi Lainnya:</strong> Krimer Nabati 20%, Gula 20%
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
             <TabsContent value="benefits">
-              <Card className="border-2 border-gold/30 bg-card/80 backdrop-blur-sm shadow-premium">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Manfaat Kesehatan</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-primary mb-3">Kesehatan Tubuh</h3>
-                      <ul className="space-y-3">
+              <div className="space-y-8">
+                {/* Manfaat Susu Kambing Murni */}
+                <Card className="border-2 border-primary/30 bg-card/80 backdrop-blur-sm shadow-premium">
+                  <CardHeader>
+                    <CardTitle className="text-3xl">
+                      <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                        ✨ Manfaat Utama Susu Kambing Murni
+                      </span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-8">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Kesehatan & Imunitas */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-primary">Untuk Kesehatan & Imunitas</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Meningkatkan daya tahan tubuh secara alami",
+                            "Mempercepat pemulihan pasca sakit",
+                            "Menstabilkan kadar gula dan metabolisme",
+                            "Mengurangi peradangan dalam tubuh",
+                            "Menjaga fungsi hati & ginjal tetap optimal"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Pencernaan */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-primary">Untuk Pencernaan</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Ramah bagi yang sensitif laktosa",
+                            "Menyehatkan usus & mendukung flora baik",
+                            "Mengurangi sembelit dan gangguan pencernaan",
+                            "Membantu penyerapan nutrisi lebih efektif"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Tulang, Sendi & Otot */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-primary">Untuk Tulang, Sendi & Otot</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Menguatkan tulang, sendi & gigi",
+                            "Mencegah osteoporosis",
+                            "Mempercepat pemulihan otot setelah aktivitas berat",
+                            "Menambah kekuatan otot & fleksibilitas sendi"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Otak & Mental */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-primary">Untuk Otak & Mental</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Meningkatkan fokus, konsentrasi & memori",
+                            "Mengurangi stres dan menenangkan saraf",
+                            "Membantu tidur lebih nyenyak",
+                            "Menjaga keseimbangan hormon otak"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Kulit & Kecantikan */}
+                    <div className="space-y-4 border-t border-border pt-6">
+                      <h3 className="text-xl font-bold text-primary">Untuk Kulit & Kecantikan</h3>
+                      <ul className="space-y-2 grid md:grid-cols-2 gap-x-6">
                         {[
-                          "Meningkatkan daya tahan tubuh",
-                          "Memperkuat tulang dan sendi",
-                          "Meningkatkan energi dan vitalitas",
-                          "Menyehatkan pencernaan",
-                          "Menjaga fungsi hati dan ginjal"
+                          "Melembapkan dan mencerahkan kulit dari dalam",
+                          "Mengurangi jerawat & iritasi kulit",
+                          "Membantu produksi kolagen alami",
+                          "Menjaga kulit tetap elastis, sehat, dan awet muda"
                         ].map((item, i) => (
                           <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
+                            <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-accent mb-3">Kecantikan & Mental</h3>
-                      <ul className="space-y-3">
-                        {[
-                          "Mencerahkan dan melembapkan kulit",
-                          "Meningkatkan daya ingat dan konsentrasi",
-                          "Mengurangi stres dan kecemasan",
-                          "Menyeimbangkan hormon tubuh",
-                          "Memperlambat proses penuaan"
-                        ].map((item, i) => (
-                          <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                            <div className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                  </CardContent>
+                </Card>
+
+                {/* Manfaat Royal Jelly */}
+                <Card className="border-2 border-accent/30 bg-card/80 backdrop-blur-sm shadow-premium">
+                  <CardHeader>
+                    <CardTitle className="text-3xl">
+                      <span className="bg-gradient-to-r from-accent to-gold-dark bg-clip-text text-transparent">
+                        ✨ Manfaat Super Royal Jelly
+                      </span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-8">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Imun & Energi */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-accent">Imun & Energi</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Meningkatkan daya tahan tubuh",
+                            "Memberikan stamina tanpa kafein",
+                            "Mengurangi kelelahan & lemas",
+                            "Mempercepat pemulihan pasca sakit"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Otak, Saraf & Mental */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-accent">Otak, Saraf & Mental</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Meningkatkan fokus, ingatan, dan kinerja otak",
+                            "Mengurangi stres & kecemasan",
+                            "Menstabilkan suasana hati",
+                            "Membantu tidur lebih nyenyak"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Hormon & Vitalitas */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-accent">Hormon & Vitalitas</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Menyeimbangkan hormon pria & wanita",
+                            "Meningkatkan vitalitas dan gairah alami",
+                            "Mendukung kesuburan",
+                            "Meredakan PMS & menopause"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Kecantikan Kulit & Rambut */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-accent">Kecantikan Kulit & Rambut</h3>
+                        <ul className="space-y-2">
+                          {[
+                            "Meningkatkan produksi kolagen",
+                            "Mencerahkan dan melembapkan kulit",
+                            "Mengurangi kerutan, jerawat, dan noda hitam",
+                            "Menguatkan rambut & mencegah kerontokan"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+
+                {/* Mengapa VITALIN Lebih Unggul */}
+                <Card className="border-2 border-gold/30 bg-gradient-to-br from-card/80 to-gold/5 backdrop-blur-sm shadow-premium">
+                  <CardContent className="p-8">
+                    <h3 className="text-2xl font-bold mb-6 text-center">
+                      <span className="bg-gradient-to-r from-gold-dark via-primary to-accent bg-clip-text text-transparent">
+                        Mengapa VITALIN Platinum Royal Jelly Lebih Unggul?
+                      </span>
+                    </h3>
+                    <ul className="grid md:grid-cols-2 gap-4">
+                      {[
+                        "Menggunakan susu kambing murni berkualitas",
+                        "Dipadukan dengan royal jelly asli",
+                        "Mudah dicerna, lembut di perut",
+                        "Aman untuk semua usia (kecuali bayi <1 tahun)",
+                        "Rasanya lembut, gurih, dan tidak amis"
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-6 h-6 text-gold shrink-0 mt-0.5" />
+                          <span className="font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
             </TabsContent>
 
             <TabsContent value="usage">
